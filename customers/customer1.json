@@ -1,0 +1,13 @@
+[
+    {
+        "id": "1",
+        "lastName": "Lovelace",
+        "firstName": "Ada",
+        "email": "adalovelace@cs.forever",
+        "telephone": "(101)110-1100",
+        "street": "1100 Binary Road",
+        "city": "Cityville",
+        "state": "Georgia",
+        "zip": "11010"
+    }
+]

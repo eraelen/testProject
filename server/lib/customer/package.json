@@ -1,0 +1,11 @@
+{
+  "name": "customer",
+  "version": "0.0.1",
+  "description": "Access to customer library which contains functions for reading and writing to customer files",
+  "main": "customer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raelen Recto",
+  "license": "BSD"
+}

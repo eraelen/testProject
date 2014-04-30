@@ -1,0 +1,113 @@
+<br>
+<br>
+
+<h1>Customer List</h1>
+<div ng-show="errorText" class="alert alert-danger">{{errorText}}</div>
+<div ng-show="successText" class="alert alert-success">{{successText}}</div>
+
+<form ng-show="customers" class="form-inline" role="form">
+  <div class="form-group">
+    <input type="text" ng-model="search" class="form-control" placeholder="Search Customers">
+  </div>
+</form>
+
+<br>
+<ul style="padding: 0;list-style:none;">
+  <li ng-repeat="customer in customers | filter: search | orderBy:'lastName'">
+    <div class="well">
+      <button ng-click="delCustomer(customer.id)" title="Delete customer" type="button" class="btn btn-danger btn-xs" style="float:right">
+        <span class="glyphicon glyphicon-remove"></span>
+      </button>
+      <button ng-click="updateCustomer(customer)" title="Update customer" type="button" class="btn btn-info btn-xs" style="float:right">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </button>
+      <dl class="dl-horizontal">
+        <dt>Name</dt><dd>{{customer.lastName}}, {{customer.firstName}}</dd>
+        <dt>Email</dt><dd>{{customer.email}}</dd>
+        <dt>Telephone</dt><dd>{{customer.telephone}}</dd>
+        <dt>Address</dt><dd>{{customer.street}}, {{customer.city}}, {{customer.state}} {{customer.zip}}</dd>
+      </dl>
+    </div>
+  </li>
+</ul>
+
+<!-- modal template for update customer here -->
+<script type="text/ng-template" id="updateCustomer.html">
+  <div class="modal-header">
+    <h1>Update Customer Record</h1>
+  </div>
+  <div class="modal-body">
+
+    <form class="form-horizontal">
+      <fieldset>
+        <p class="text-danger">{{errorText}}</p>
+        
+        <div class="form-group">
+          <div class="col-sm-5"><label>Last Name</label></div><br>
+          <div class="col-sm-10">
+            <input class="form-control" ng-model="lastName" type="text" placeholder="" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="col-sm-5"><label>First Name</label></div><br>
+          <div class="col-sm-10">
+            <input class="form-control" ng-model="firstName" type="text" placeholder="" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="col-sm-5"><label>Email</label></div><br>
+          <div class="col-sm-10">
+            <input class="form-control" ng-model="email" type="email" placeholder="" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="col-sm-5"><label>Telephone Number</label></div><br>
+          <div class="col-sm-10">
+            <input class="form-control" ng-model="tel" type="tel" pattern="[\(]\d{3}[\)]\d{3}[\-]\d{4}" placeholder="" required>
+            <span class="help-block">Format: (###) ### - ####</span>
+          </div>
+        </div>
+        
+        <strong>Address</strong>
+        <div class="form-group">
+          <div class="col-sm-5"><label>Street</label></div><br>
+          <div class="col-sm-10">
+            <input class="form-control" ng-model="street" type="text" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="col-sm-5"><label>City</label></div><br>
+          <div class="col-sm-10">
+            <input class="form-control" ng-model="city" type="text" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="col-sm-5"><label>State</label></div><br>
+          <div class="col-sm-10">
+            <select class="form-control" ng-model="state" ng-options="s.name for s in states">
+              <option value="">{{state}}</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="col-sm-5"><label>Zipcode</label></div><br>
+          <div class="col-sm-10">
+            <input class="form-control" ng-model="zip" type="text" pattern="(\d{5})" required>
+            <span class="help-block">Please use the 5-digit zipcode format.</span>
+          </div>
+        </div>        
+      </fieldset>
+    </form>
+  
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="update(lastName, firstName, email, tel, street, city, state, zip)">Update</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  </div>
+</script>

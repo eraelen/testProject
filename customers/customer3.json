@@ -1,0 +1,13 @@
+[
+    {
+        "id": "3",
+        "lastName": "Klawe",
+        "firstName": "Maria",
+        "email": "mariaklawe@awesome.cs",
+        "telephone": "(777)888-9999",
+        "street": "1234 Boulevard",
+        "city": "Claremont",
+        "state": "California",
+        "zip": "91711"
+    }
+]
